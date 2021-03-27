@@ -20,7 +20,8 @@ ps.print();
 ```
 
 ### Sample Output"
-```Running query: SELECT * FROM CAMPUS```
+<img width="295" alt="Screen Shot 2021-03-26 at 6 57 31 PM" src="https://user-images.githubusercontent.com/54959558/112706976-26e03100-8e65-11eb-9f98-9411fc0e4d36.png">
+
 
 ## To turn on/off auto-printing (program-wise)
 ```
