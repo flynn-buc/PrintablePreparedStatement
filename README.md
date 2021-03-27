@@ -12,7 +12,7 @@ PrintablePreparedStatement ps = new PrintablePreparedStatement(connection.prepar
 - Any query can be passed as a parameter
 - With the default settings, calling ```ps.execute()```, ```ps.executeQuery()```, or ```ps.executeUpdate()``` will print the query before executing it
 
-## To print
+## To print manually
 ```
 System.out.println(ps.toString());
 ```
