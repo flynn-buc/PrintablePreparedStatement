@@ -19,6 +19,9 @@ or
 ps.print();
 ```
 
+### Sample Output"
+```Running query: SELECT * FROM CAMPUS```
+
 ## To turn on/off auto-printing (program-wise)
 ```
 PrintablePreparedStatement.autoPrint = true; // or false 
