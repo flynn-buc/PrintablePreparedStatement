@@ -1,8 +1,10 @@
 # PrintablePreparedStatement
 Decorator for PreparedStatement, prints queries in readable format
 
+# Installation
+Copy the file into your project (jar will be coming in the future)
 # Usage
-## To setup
+## To instantiate
 ``` 
 String query = "INSERT INTO table_name VALUES (?, ?, ?, ?);"
 PrintablePreparedStatement ps = new PrintablePreparedStatement(connection.prepareStatement(query), query);
