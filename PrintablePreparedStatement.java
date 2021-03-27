@@ -9,6 +9,8 @@ import java.util.Calendar;
 import java.util.List;
 
 public class PrintablePreparedStatement implements Wrapper, AutoCloseable, Statement {
+
+
     private final List<String> stringList;
     private final PreparedStatement preparedStatement;
     public static boolean autoPrint = true;
@@ -22,10 +24,14 @@ public class PrintablePreparedStatement implements Wrapper, AutoCloseable, State
         return str.toString();
     }
 
-    public void print() {
+    private void autoPrintQuery() {
         if (autoPrint) {
-            System.out.println("Running Query: " + toString());
+            print();
         }
+    }
+
+    public void print(){
+        System.out.println("Running Query: " + toString());
     }
 
     public PrintablePreparedStatement(PreparedStatement preparedStatement, String query) {
@@ -242,12 +248,12 @@ public class PrintablePreparedStatement implements Wrapper, AutoCloseable, State
     }
 
     public ResultSet executeQuery() throws SQLException {
-       print();
+       autoPrintQuery();
         return preparedStatement.executeQuery();
     }
 
     public int executeUpdate() throws SQLException {
-       print();
+       autoPrintQuery();
         return preparedStatement.executeUpdate();
     }
 
