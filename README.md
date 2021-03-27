@@ -23,3 +23,27 @@ ps.print();
 ```
 PrintablePreparedStatement.autoPrint = true; // or false 
 ```
+
+
+# Current working setters
+```
+setBoolean()
+setBytes()
+setShort()
+setInt()
+setString()
+setLong()
+setFloat()
+setDouble()
+setBigDecimal()
+setDate()
+setTime()
+setTimestamp()
+```
+
+## Known issues
+- Will not work if the table name or the attribute contains a '?'
+- Does not work with arrays or streams
+
+# Missing features?
+- Feel free to let me know if a particular setter isn't printing properly, or if you'd like one that isn't listed above
