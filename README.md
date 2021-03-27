@@ -2,7 +2,7 @@
 Decorator for PreparedStatement, prints queries in readable format
 
 # Installation
-Copy the file into your project (jar will be coming in the future)
+Copy the file into your project (jar and maven dependency will be coming in the future)
 # Usage
 ## To instantiate
 ``` 
