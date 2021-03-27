@@ -1,5 +1,5 @@
 # PrintablePreparedStatement
-Decorator for PreparedStatement, prints queries in readable format
+Decorator for JDBC PreparedStatement, prints queries in readable format
 
 # Installation
 Copy the file into your project (jar and maven dependency will be coming in the future)
