@@ -52,4 +52,4 @@ setTimestamp()
 - Does not work with arrays or streams
 
 # Missing features?
-- Feel free to let me know if a particular setter isn't printing properly, or if you'd like one that isn't listed above
+- Feel free to make an issue if a particular setter isn't printing properly, or if you'd like one that isn't listed above
