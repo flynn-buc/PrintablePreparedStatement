@@ -1,3 +1,15 @@
+- [PrintablePreparedStatement](#printablepreparedstatement)
+- [Installation](#installation)
+- [Usage](#usage)
+  * [To instantiate](#to-instantiate)
+  * [To print manually](#to-print-manually)
+    + [Sample Output](#sample-output)
+  * [To turn on/off auto-printing (program-wise)](#to-turn-on-off-auto-printing--program-wise-)
+- [Current working setters](#current-working-setters)
+  * [Known issues](#known-issues)
+- [Missing features?](#missing-features-)
+
+
 # PrintablePreparedStatement
 Decorator for JDBC PreparedStatement, prints queries in readable format
 
