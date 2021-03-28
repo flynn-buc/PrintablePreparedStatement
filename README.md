@@ -22,7 +22,12 @@ ps.print();
 ```
 
 ### Sample Output
-<img width="295" alt="Screen Shot 2021-03-26 at 6 57 31 PM" src="https://user-images.githubusercontent.com/54959558/112706976-26e03100-8e65-11eb-9f98-9411fc0e4d36.png">
+- Code used
+<img width="921" alt="Screen Shot 2021-03-28 at 2 02 10 AM" src="https://user-images.githubusercontent.com/54959558/112747339-a5be9200-8f69-11eb-9224-7caed7a5ed5e.png">
+
+- Output
+<img width="503" alt="Screen Shot 2021-03-28 at 2 00 24 AM" src="https://user-images.githubusercontent.com/54959558/112747340-a6572880-8f69-11eb-8af3-873fbe80aa61.png">
+
 
 
 ## To turn on/off auto-printing (program-wise)
