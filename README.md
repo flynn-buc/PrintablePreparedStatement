@@ -23,10 +23,12 @@ ps.print();
 
 ### Sample Output
 - Code used
-<img width="921" alt="Screen Shot 2021-03-28 at 2 02 10 AM" src="https://user-images.githubusercontent.com/54959558/112747339-a5be9200-8f69-11eb-9224-7caed7a5ed5e.png">
+<img width="920" alt="Screen Shot 2021-03-28 at 2 06 19 AM" src="https://user-images.githubusercontent.com/54959558/112747429-3dbc7b80-8f6a-11eb-8e3b-4d7b75ccc5bf.png">
+
 
 - Output
-<img width="503" alt="Screen Shot 2021-03-28 at 2 00 24 AM" src="https://user-images.githubusercontent.com/54959558/112747340-a6572880-8f69-11eb-8af3-873fbe80aa61.png">
+<img width="491" alt="Screen Shot 2021-03-28 at 2 04 37 AM" src="https://user-images.githubusercontent.com/54959558/112747381-f9c97680-8f69-11eb-8bcd-b0837b0d443d.png">
+
 
 
 
