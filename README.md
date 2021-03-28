@@ -53,7 +53,7 @@ setBigDecimal()
 setDate()
 setTime()
 setTimestamp()
-setObject()
+setObject() // the object's toString() method will be called.
 ```
 
 ## Known issues
