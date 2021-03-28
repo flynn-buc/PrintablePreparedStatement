@@ -1,3 +1,4 @@
+# Contents
 - [PrintablePreparedStatement](#printablepreparedstatement)
 - [Installation](#installation)
 - [Usage](#usage)
