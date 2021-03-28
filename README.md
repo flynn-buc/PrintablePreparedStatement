@@ -4,7 +4,7 @@
 - [Usage](#usage)
   * [To instantiate](#to-instantiate)
   * [To print manually](#to-print-manually)
-    + [Sample Output](#sample-output)
+  * [Sample Output](#sample-output)
   * [To turn on/off auto-printing (program-wise)](#to-turn-on-off-auto-printing--program-wise-)
 - [Current working setters](#current-working-setters)
   * [Known issues](#known-issues)
@@ -34,7 +34,7 @@ or
 ps.print();
 ```
 
-### Sample Output
+## Sample Output
 - Code used
 <img width="945" alt="Screen Shot 2021-03-28 at 2 11 00 AM" src="https://user-images.githubusercontent.com/54959558/112747521-e4a11780-8f6a-11eb-9c80-4d8861e2fcd5.png">
 
