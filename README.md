@@ -4,8 +4,8 @@
 - [Usage](#usage)
   * [To instantiate](#to-instantiate)
   * [To print manually](#to-print-manually)
-  * [Sample Output](#sample-output)
   * [To turn on/off auto-printing (program-wise)](#to-turn-on-off-auto-printing--program-wise-)
+  * [Sample Output](#sample-output)
 - [Current working setters](#current-working-setters)
   * [Known issues](#known-issues)
 - [Missing features?](#missing-features-)
@@ -34,6 +34,13 @@ or
 ps.print();
 ```
 
+
+## To turn on/off auto-printing (program-wise)
+```
+PrintablePreparedStatement.autoPrint = false; // true by default
+```
+
+
 ## Sample Output
 - Code used
 <img width="945" alt="Screen Shot 2021-03-28 at 2 11 00 AM" src="https://user-images.githubusercontent.com/54959558/112747521-e4a11780-8f6a-11eb-9c80-4d8861e2fcd5.png">
@@ -43,13 +50,6 @@ ps.print();
 - Output
 <img width="491" alt="Screen Shot 2021-03-28 at 2 04 37 AM" src="https://user-images.githubusercontent.com/54959558/112747381-f9c97680-8f69-11eb-8bcd-b0837b0d443d.png">
 
-
-
-
-## To turn on/off auto-printing (program-wise)
-```
-PrintablePreparedStatement.autoPrint = false; // true by default
-```
 
 
 # Current working setters
