@@ -23,7 +23,8 @@ ps.print();
 
 ### Sample Output
 - Code used
-<img width="920" alt="Screen Shot 2021-03-28 at 2 06 19 AM" src="https://user-images.githubusercontent.com/54959558/112747429-3dbc7b80-8f6a-11eb-8e3b-4d7b75ccc5bf.png">
+<img width="945" alt="Screen Shot 2021-03-28 at 2 11 00 AM" src="https://user-images.githubusercontent.com/54959558/112747521-e4a11780-8f6a-11eb-9c80-4d8861e2fcd5.png">
+
 
 
 - Output
