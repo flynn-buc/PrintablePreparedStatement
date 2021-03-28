@@ -53,6 +53,7 @@ setBigDecimal()
 setDate()
 setTime()
 setTimestamp()
+setObject()
 ```
 
 ## Known issues
