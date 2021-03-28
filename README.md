@@ -35,7 +35,7 @@ ps.print();
 
 ## To turn on/off auto-printing (program-wise)
 ```
-PrintablePreparedStatement.autoPrint = true; // or false 
+PrintablePreparedStatement.autoPrint = false; // true by default
 ```
 
 
