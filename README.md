@@ -3,27 +3,42 @@
 - [Installation](#installation)
 - [Usage](#usage)
   * [To instantiate](#to-instantiate)
+  * [To instantiate with auto-printing turned off](#to-instantiate-with-auto-printing-turned-off)
+  * [To toggle auto-printing (application-wise)](#to-toggle-auto-printing-application-wise)
   * [To print manually](#to-print-manually)
-  * [To turn on/off auto-printing (program-wise)](#to-turn-on-off-auto-printing--program-wise-)
   * [Sample Output](#sample-output)
 - [Current working setters](#current-working-setters)
   * [Known issues](#known-issues)
-- [Missing features?](#missing-features-)
+- [Missing features?](#missing-features)
 
 
 # PrintablePreparedStatement
-Decorator for JDBC PreparedStatement, prints queries in readable format
+Decorator for JDBC PreparedStatement, prints queries in readable format. 
+Internal implementation of PreparedStatement is unchanged.
 
 # Installation
-Copy the file into your project (jar and maven dependency may be coming in the future)
+Copy the file into your project (jar and/or maven dependency may be coming in the future)
 # Usage
 ## To instantiate
 ``` 
-String query = "INSERT INTO table_name VALUES (?, ?, ?, ?);"
+String query = "INSERT INTO table_name VALUES (?, ?, ?, ?)"
 PrintablePreparedStatement ps = new PrintablePreparedStatement(connection.prepareStatement(query), query);
 ```
 - Any query can be passed as a parameter
 - With the default settings, calling ```ps.execute()```, ```ps.executeQuery()```, or ```ps.executeUpdate()``` will print the query before executing it
+
+## To instantiate with auto-printing turned off
+
+``` 
+String query = "INSERT INTO table_name VALUES (?, ?, ?, ?)"
+PrintablePreparedStatement ps = new PrintablePreparedStatement(connection.prepareStatement(query), query, false);
+```
+
+
+## To toggle auto-printing (application-wise)
+```
+PrintablePreparedStatement.autoPrint = false; // true by default
+```
 
 ## To print manually
 ```
@@ -35,27 +50,22 @@ ps.print();
 ```
 
 
-## To turn on/off auto-printing (program-wise)
-```
-PrintablePreparedStatement.autoPrint = false; // true by default
-```
-
-
 ## Sample Output
 - Code used
-<img width="945" alt="Screen Shot 2021-03-28 at 2 11 00 AM" src="https://user-images.githubusercontent.com/54959558/112747521-e4a11780-8f6a-11eb-9c80-4d8861e2fcd5.png">
+<img width="931" alt="Screen Shot 2021-04-15 at 12 34 22 AM" src="https://user-images.githubusercontent.com/54959558/114831643-776eee00-9d82-11eb-8b2c-8d694a3f8484.png">
+
 
 
 
 - Output
-<img width="491" alt="Screen Shot 2021-03-28 at 2 04 37 AM" src="https://user-images.githubusercontent.com/54959558/112747381-f9c97680-8f69-11eb-8bcd-b0837b0d443d.png">
+<img width="582" alt="Screen Shot 2021-04-15 at 12 28 45 AM" src="https://user-images.githubusercontent.com/54959558/114831653-7938b180-9d82-11eb-868a-cd4b1f45f794.png">
+
 
 
 
 # Current working setters
 ```
 setBoolean()
-setBytes()
 setShort()
 setInt()
 setString()
@@ -70,7 +80,7 @@ setObject() // the object's toString() method will be called.
 ```
 
 ## Known issues
-- Will not work if the table name or the attribute contains a '?'
+- May not work if the table name or the attribute contains a '?'
 - Does not work with arrays or streams
 
 # Missing features?
