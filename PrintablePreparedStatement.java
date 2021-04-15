@@ -3,40 +3,59 @@ import java.io.Reader;
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 public class PrintablePreparedStatement implements PreparedStatement {
 
-
-    private final List<String> stringList;
+    private final List<String> queryStrList;
+    private List<String> parameterList;
     private final PreparedStatement preparedStatement;
     public static boolean autoPrint = true;
+    private final boolean disableInstanceAutoPrint;
 
+    public PrintablePreparedStatement(PreparedStatement preparedStatement, String query) {
+        this(preparedStatement, query, false);
+    }
+
+    public PrintablePreparedStatement(PreparedStatement preparedStatement, String query, Boolean disableInstanceAutoPrint) {
+        this.preparedStatement = preparedStatement;
+        queryStrList = new ArrayList<>(Arrays.asList(query.split("\\?")));
+        this.disableInstanceAutoPrint = disableInstanceAutoPrint;
+        initializeParameterList();
+    }
+
+    @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
 
-        for (String string: stringList) {
-            str.append(string);
+        for (int i = 0; i < queryStrList.size(); i++ ) {
+            str.append(queryStrList.get(i)).append(parameterList.get(i));
         }
+
         return str.toString();
     }
 
     private void autoPrintQuery() {
-        if (autoPrint) {
+        if (autoPrint && !disableInstanceAutoPrint) {
             print();
         }
+    }
+
+    private void addStringToList(int parameterIndex, Object obj) {
+        addToList(parameterIndex, "'" + obj + "'");
+    }
+
+    private void addToList(int parameterIndex, Object obj) {
+        parameterList.set(parameterIndex - 1, obj.toString());
     }
 
     public void print(){
         System.out.println("Running Query: " + toString());
     }
 
-    public PrintablePreparedStatement(PreparedStatement preparedStatement, String query) {
-        this.preparedStatement = preparedStatement;
-        stringList = new ArrayList<>(Arrays.asList(query.split("\\?")));
+    private void initializeParameterList() {
+        parameterList = new ArrayList<>(Collections.nCopies(queryStrList.size(), ""));
     }
 
     public <T> T unwrap(Class<T> iface) throws SQLException {
@@ -248,12 +267,12 @@ public class PrintablePreparedStatement implements PreparedStatement {
     }
 
     public ResultSet executeQuery() throws SQLException {
-       autoPrintQuery();
+        autoPrintQuery();
         return preparedStatement.executeQuery();
     }
 
     public int executeUpdate() throws SQLException {
-       autoPrintQuery();
+        autoPrintQuery();
         return preparedStatement.executeUpdate();
     }
 
@@ -262,67 +281,67 @@ public class PrintablePreparedStatement implements PreparedStatement {
     }
 
     public void setBoolean(int parameterIndex, boolean x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setBoolean(parameterIndex, x);
     }
 
     public void setByte(int parameterIndex, byte x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setByte(parameterIndex, x);
     }
 
     public void setShort(int parameterIndex, short x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addToList(parameterIndex, x);
         preparedStatement.setShort(parameterIndex, x);
     }
 
     public void setInt(int parameterIndex, int x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addToList(parameterIndex, x);
         preparedStatement.setInt(parameterIndex, x);
     }
 
     public void setLong(int parameterIndex, long x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addToList(parameterIndex, x);
         preparedStatement.setLong(parameterIndex, x);
     }
 
     public void setFloat(int parameterIndex, float x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addToList(parameterIndex, x);
         preparedStatement.setFloat(parameterIndex, x);
     }
 
     public void setDouble(int parameterIndex, double x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addToList(parameterIndex, x);
         preparedStatement.setDouble(parameterIndex, x);
     }
 
     public void setBigDecimal(int parameterIndex, BigDecimal x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addToList(parameterIndex, x.toString());
         preparedStatement.setBigDecimal(parameterIndex, x);
     }
 
     public void setString(int parameterIndex, String x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setString(parameterIndex, x);
     }
 
     public void setBytes(int parameterIndex, byte[] x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + Arrays.toString(x));
+        queryStrList.set(parameterIndex - 1, queryStrList.get(parameterIndex - 1) + Arrays.toString(x));
         preparedStatement.setBytes(parameterIndex, x);
     }
 
     public void setDate(int parameterIndex, Date x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setDate(parameterIndex, x);
     }
 
     public void setTime(int parameterIndex, Time x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setTime(parameterIndex, x);
     }
 
     public void setTimestamp(int parameterIndex, Timestamp x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setTimestamp(parameterIndex, x);
     }
 
@@ -339,21 +358,22 @@ public class PrintablePreparedStatement implements PreparedStatement {
     }
 
     public void clearParameters() throws SQLException {
+        initializeParameterList();
         preparedStatement.clearParameters();
     }
 
     public void setObject(int parameterIndex, Object x, int targetSqlType) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setObject(parameterIndex, x, targetSqlType);
     }
 
     public void setObject(int parameterIndex, Object x) throws SQLException {
-        stringList.set(parameterIndex - 1, stringList.get(parameterIndex - 1) + x);
+        addStringToList(parameterIndex, x);
         preparedStatement.setObject(parameterIndex, x);
     }
 
     public boolean execute() throws SQLException {
-        System.out.println(toString());
+        autoPrintQuery();
         return preparedStatement.execute();
     }
 
@@ -442,6 +462,7 @@ public class PrintablePreparedStatement implements PreparedStatement {
     }
 
     public void setObject(int parameterIndex, Object x, int targetSqlType, int scaleOrLength) throws SQLException {
+        addStringToList(parameterIndex, x.toString());
         preparedStatement.setObject(parameterIndex, x, targetSqlType, scaleOrLength);
     }
 
@@ -490,11 +511,12 @@ public class PrintablePreparedStatement implements PreparedStatement {
     }
 
     public void setObject(int parameterIndex, Object x, SQLType targetSqlType) throws SQLException {
+        addStringToList(parameterIndex, x.toString());
         preparedStatement.setObject(parameterIndex, x, targetSqlType);
     }
 
     public long executeLargeUpdate() throws SQLException {
-        System.out.println(toString());
+        autoPrintQuery();
         return preparedStatement.executeLargeUpdate();
     }
 }
