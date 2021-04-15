@@ -326,7 +326,6 @@ public class PrintablePreparedStatement implements PreparedStatement {
     }
 
     public void setBytes(int parameterIndex, byte[] x) throws SQLException {
-        queryStrList.set(parameterIndex - 1, queryStrList.get(parameterIndex - 1) + Arrays.toString(x));
         preparedStatement.setBytes(parameterIndex, x);
     }
 
