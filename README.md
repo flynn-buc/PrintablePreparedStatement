@@ -20,11 +20,15 @@ Internal implementation of PreparedStatement is unchanged.
 Copy the file into your project (jar and/or maven dependency may be coming in the future)
 # Usage
 ## To instantiate
+
+
 ``` 
 String query = "INSERT INTO table_name VALUES (?, ?, ?, ?)"
 PrintablePreparedStatement ps = 
 new PrintablePreparedStatement(connection.prepareStatement(query), query);
 ```
+Where ```connection``` is an instance of ```java.sql.Connection```
+
 - Any query can be passed as a parameter
 - With the default settings, calling ```ps.execute()```, ```ps.executeQuery()```, or ```ps.executeUpdate()``` will print the query before executing it
 
